@@ -85,7 +85,6 @@ const SignUP = () => {
             <button className="bg-transparent hover:bg-[#ff8828] text-[#ff8828] font-semibold hover:text-white py-2 px-4 border border-[#ff8828] hover:border-transparent rounded" disabled={loading }>
               {
                 loading ?(
-                  
                   <span>Loading...</span>
                 ) : 'Sign Up'
               }
