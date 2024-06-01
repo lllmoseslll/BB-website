@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import { useState } from "react";
 import {useDispatch, useSelector } from "react-redux";
 import {signInStart, signInSuccess, signInFailure} from "../redux/user/userSlice"
+import { OAuth } from "../components/OAuth";
 
 
 
@@ -81,13 +82,14 @@ const SignIn = () => {
               placeholder="**********"
               id="password" onChange={handleChange}/>
             </div>
-            <button className="bg-transparent hover:bg-[#ff8828] text-[#ff8828] font-semibold hover:text-white py-2 px-4 border border-[#ff8828] hover:border-transparent rounded" disabled={loading }>
+            <button className="bg-[#ff8828] hover:bg-[#ff6c28]  font-semibold text-white py-2 px-4 border border-[#ff8828] hover:border-transparent rounded" disabled={loading }>
               {
                 loading ?(
                   <span>Loading...</span>
                 ) : 'Sign in'
               }
               </button>
+              <OAuth />
           </form>
           <div className="flex gap-2 mt-5 text-sm">
             <span>You dont have an account?</span>

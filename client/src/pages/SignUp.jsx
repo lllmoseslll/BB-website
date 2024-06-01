@@ -2,6 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { useState } from "react";
+import { OAuth } from "../components/OAuth";
+import {useDispatch, useSelector } from "react-redux";
+import {signInStart, signInSuccess, signInFailure} from "../redux/user/userSlice"
 
 
 
@@ -9,8 +12,8 @@ import { useState } from "react";
 
 const SignUP = () => {
   const [formData, setFormData] = useState({});
-  const [errorMessage, setErrorMessage] = useState([null]);
-  const [loading, setLoading] = useState(false);
+  const {loading, error:errorMessage} = useSelector(state => state.user);
+  const dispatch =  useDispatch();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -20,11 +23,13 @@ const SignUP = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if(!formData.username || !formData.email || !formData.password){
-      return setErrorMessage('Please fill all fields');
+      // return setErrorMessage('Please fill all fields');
+      return dispatch(signInFailure("Please fill all fields"));
     }
     try {
-      setLoading(false);
-      setErrorMessage(null);
+      dispatch(signInStart());
+      // setLoading(false);
+      // setErrorMessage(null);
       const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
@@ -32,15 +37,18 @@ const SignUP = () => {
       });
       const data = await res.json();
       if(data.success === false){
-        return setErrorMessage(data.message);
+        // return setErrorMessage(data.message);
+        dispatch(signInFailure(data.message));
       }
-      setLoading(false);
+      
       if(res.ok){
+        dispatch(signInSuccess(data));
         navigate("/sign-in");
       }
     } catch (error) {
-      setErrorMessage(error.message);
-      setLoading(false); 
+      // setErrorMessage(error.message);
+      // setLoading(false); 
+      dispatch(signInFailure(error.message));
     }
 
   };
@@ -82,13 +90,14 @@ const SignUP = () => {
               placeholder="Your Password"
               id="password" onChange={handleChange}/>
             </div>
-            <button className="bg-transparent hover:bg-[#ff8828] text-[#ff8828] font-semibold hover:text-white py-2 px-4 border border-[#ff8828] hover:border-transparent rounded" disabled={loading }>
+            <button className="bg-[#ff8828] hover:bg-[#ff6c28]  font-semibold text-white py-2 px-4 border border-[#ff8828] hover:border-transparent rounded" disabled={loading }>
               {
                 loading ?(
                   <span>Loading...</span>
                 ) : 'Sign Up'
               }
               </button>
+              <OAuth />
           </form>
           <div className="flex gap-2 mt-5 text-sm">
             <span>Have an account?</span>
