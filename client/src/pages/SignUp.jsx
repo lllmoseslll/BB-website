@@ -1,6 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import { useState } from "react";
 import { OAuth } from "../components/OAuth";
 import {useDispatch, useSelector } from "react-redux";
@@ -55,8 +53,8 @@ const SignUP = () => {
 
   return (
     <>
-    <div className="min-h-screen bg-[#2D4966]">
-      <Navbar />
+    <div className="min-h-screen pt-[75px]">
+     
       <div className="flex mb-24 gap-5 p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center">
         {/* left div */}
         <div className="p-10 flex-1 ">
@@ -116,7 +114,7 @@ const SignUP = () => {
         </div>
         
       </div>
-      <Footer />
+
     </div>
 
     </>
