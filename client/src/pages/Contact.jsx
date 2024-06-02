@@ -1,10 +1,9 @@
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+
 
 const Contact = () => {
   return (
-    <div className="flex flex-col bg-[#2D4966] w-full h-auto">
-      <Navbar />
+    <div className="flex flex-col  w-full h-auto pt-[75px]">
+      
         <div className="flex justify-center my-20 text-3xl font-bold text-[#ff8828]">
           <h1>Contact</h1>
         </div>
@@ -38,7 +37,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      
     </div>
   )
 }

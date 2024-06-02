@@ -1,13 +1,10 @@
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-
 
 const Team = () => {
     return (
-      <div className="flex flex-col justify-center w-full h-auto bg-[#2D4966]">
-          <div className="w-full h-auto bg-[url('/assets/greenHouse.jpg')] bg-cover bg-center ">
-            <div className="bg-[#000000cc]">
-            <Navbar />
+      <div className="flex flex-col justify-center w-full min-h-screen ">
+          <div className="w-full  h-full bg-[url('/assets/greenHouse.jpg')] bg-cover bg-center ">
+            <div className=" w-full h-full bg-black/70 pt-[75px] ">
+            
             <div className="flex justify-center mt-20 mb-6">
                 <h1 className="text-3xl text-[#ff8828] font-bold">Our Team</h1>
               </div> 
@@ -51,7 +48,7 @@ const Team = () => {
     
              </div>
           </div>
-          <Footer />
+       
         
       </div>
     )
