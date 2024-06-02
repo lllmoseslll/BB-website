@@ -13,6 +13,8 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [ ],
+  plugins: [
+    import('flowbite/plugin'),
+   ],
 }
 
