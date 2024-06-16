@@ -11,9 +11,9 @@ const firebaseConfig = {
   projectId: "bb-website-98d1c",
   storageBucket: "bb-website-98d1c.appspot.com",
   messagingSenderId: "481196732090",
-  appId: "1:481196732090:web:d27eb6ff43e2de59575c83"
+  appId: "1:481196732090:web:d27eb6ff43e2de59575c83",
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
 
+export const app = initializeApp(firebaseConfig);
